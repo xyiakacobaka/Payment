@@ -18,5 +18,9 @@ internal class Program
         payment3.Salary = 14000;
         payment3.ProcentBonus = 0.5;
         payment3.ProcentWithheldAmount = 0.5;
+        Console.WriteLine(payment1.ToString());
+        Console.WriteLine(payment3.ToString());
+        Console.WriteLine(payment3.ToString());
+
     }
 }
