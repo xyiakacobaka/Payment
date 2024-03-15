@@ -102,5 +102,11 @@ namespace Payments
         {
             return Salary * 0.13;
         }
+        public override string ToString()
+        {
+            return "Сотрудник " + this.LastName + " устроился на работу в " + this.Year + " его заработная плата состовляет " + this.Salary + 
+                "\nПроцент надбавки к зарплате данного сотрудник = " + this.ProcentBonus + "\nСотрудник заработал за все время = " + this.GivenAmount +
+                "\nУдержанная сумма = " + this.ProcentWithheldAmount;
+        }
     }
 }
