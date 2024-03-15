@@ -11,13 +11,13 @@ namespace Payments
         public string LastName { get; set; } //Фамилия
         public double Salary { get; set; } //Оклад
         public int Year; // Год поступления на работу
-        public int year 
-        { 
-            get 
+        public int year
+        {
+            get
             { return Year; }
-            set 
+            set
             {
-                if (value <= 2024 && value >=1980)
+                if (value <= 2024 && value >= 1980)
                 {
                     Year = value;
                 }
@@ -25,23 +25,23 @@ namespace Payments
             }
         }
         public double ProcentBonus; //Процент надбавки
-        public double procentbonus
+        public double procentbonus // свойство для проверки информации
         {
             get { return ProcentBonus; }
             set
             {
-                if (value>0)
+                if (value > 0)
                 {
                     ProcentBonus = value;
                 }
-                else value=0;
+                else value = 0;
             }
         }
         public int GivenAmount; //Начисленная сумма
-        public int givenamount
+        public int givenamount // свойство для проверки иформации
         {
             get { return GivenAmount; }
-            set 
+            set
             {
                 if (value >= 0)
                 {
@@ -51,12 +51,12 @@ namespace Payments
             }
         }
         public double ProcentWithheldAmount; //Удержанная сумма в процентах
-        public double procentwithheldamount
+        public double procentwithheldamount // свойство для проверки иформации
         {
-            get {return ProcentWithheldAmount;}
+            get { return ProcentWithheldAmount; }
             set
             {
-                if(value >= 0)
+                if (value >= 0)
                 {
                     ProcentWithheldAmount = value;
                 }
@@ -92,7 +92,7 @@ namespace Payments
         }
         public int Experience()//стаж работы
         {
-            return 2024-Year;
+            return 2024 - Year;
         }
         public double PencionDeductions()//пенсионный взнос
         {
@@ -102,7 +102,15 @@ namespace Payments
         {
             return Salary * 0.13;
         }
-        public override string ToString()
+        public static Payment operator +(Payment p1, Payment p2)
+        {
+            if (p1.Experience() < p2.Experience()) { return new Payment(p2.LastName, p1.Salary + p2.Salary, p1.Year, p1.ProcentBonus + p2.ProcentBonus, p1.GivenAmount, p1.ProcentWithheldAmount); }
+            else
+            {
+                return new Payment(p1.LastName, p1.Salary + p2.Salary, p2.Year, p1.ProcentBonus + p2.ProcentBonus, p2.GivenAmount, p2.ProcentWithheldAmount);
+            }
+        }
+        public override string ToString()//Зачем использовать метод, если уже есть заранее созданная функция:\
         {
             return "Сотрудник " + this.LastName + " устроился на работу в " + this.Year + " его заработная плата составляет " + this.Salary + 
                 "\nПроцент надбавки к зарплате данного сотрудник = " + this.ProcentBonus + "\nСотрудник заработал за все время = " + this.GivenAmount +
