@@ -63,7 +63,7 @@ namespace Payments
                 else value = 0;
             }
         }
-        public Payment(string LastName, double Salary, int Year, double ProcentBonus, int GivenAmount, double ProcentWithheldAmount)
+        public Payment(string LastName, double Salary, int Year, double ProcentBonus, int GivenAmount, double ProcentWithheldAmount)//Заполняемый конструктор
         {
             this.LastName = LastName;
             this.Salary = Salary;
@@ -73,7 +73,7 @@ namespace Payments
             this.ProcentWithheldAmount = ProcentWithheldAmount;
 
         }
-        public Payment()
+        public Payment()//пустой конструктор
         {
             LastName = "";
             Salary = 0;
@@ -82,29 +82,29 @@ namespace Payments
             GivenAmount = 0;
             ProcentWithheldAmount = 0;
         }
-        public double CalculationGivenAmount()
+        public double CalculationGivenAmount()//выданная сумма
         {
             return Salary + (Salary * ProcentBonus) - (Salary - ProcentWithheldAmount);
         }
-        public double CalculationWithheldAmount()
+        public double CalculationWithheldAmount()//удержанная сумма
         {
             return Salary * ProcentWithheldAmount;
         }
-        public int Experience()
+        public int Experience()//стаж работы
         {
             return 2024-Year;
         }
-        public double PencionDeductions()
+        public double PencionDeductions()//пенсионный взнос
         {
             return Salary * 0.22;
         }
-        public double TaxDeductions()
+        public double TaxDeductions()//НДС
         {
             return Salary * 0.13;
         }
         public override string ToString()
         {
-            return "Сотрудник " + this.LastName + " устроился на работу в " + this.Year + " его заработная плата состовляет " + this.Salary + 
+            return "Сотрудник " + this.LastName + " устроился на работу в " + this.Year + " его заработная плата составляет " + this.Salary + 
                 "\nПроцент надбавки к зарплате данного сотрудник = " + this.ProcentBonus + "\nСотрудник заработал за все время = " + this.GivenAmount +
                 "\nУдержанная сумма = " + this.ProcentWithheldAmount;
         }
